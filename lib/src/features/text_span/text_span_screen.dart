@@ -7,7 +7,9 @@ class TextSpanScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text('Rich Text View'),
+      ),
       body: SafeArea(
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,

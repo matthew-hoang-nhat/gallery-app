@@ -24,6 +24,12 @@ class HomeScreen extends StatelessWidget {
             },
             child: const Text('Row Column'),
           ),
+          TextButton(
+            onPressed: () {
+              context.push(AppPages.stackAlignScreen);
+            },
+            child: const Text('Stack Align'),
+          ),
         ],
       )),
     );

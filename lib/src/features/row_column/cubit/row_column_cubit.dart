@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gallery_app/app.dart';
 
 part 'row_column_state.dart';
 
@@ -31,6 +32,7 @@ class RowColumnCubit extends Cubit<RowColumnState> implements ParentCubit {
       emit(NewSettingState.fromOldSettingState(state,
           crossAxisAlignment: value));
     }
+    while (getIt.allReadySync() != true) {}
     if (value is TextBaseline) {
       emit(NewSettingState.fromOldSettingState(state, textBaseline: value));
     }

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gallery_app/src/features/row_column/cubit/row_column_cubit.dart';
 
-class MeDropDown<T> extends StatelessWidget {
-  const MeDropDown({super.key, required this.items});
+class MeDropDown<T, TypeCubit extends Cubit> extends StatelessWidget {
+  const MeDropDown({super.key, required this.items, required this.addEvent});
   final List<T> items;
+  final Function addEvent;
   @override
   Widget build(BuildContext context) {
-    final bloc = BlocProvider.of<RowColumnCubit>(context);
+    final bloc = BlocProvider.of<TypeCubit>(context);
     T valueItem = items[0];
-    return BlocBuilder<RowColumnCubit, RowColumnState>(
+    return BlocBuilder(
         bloc: bloc,
         builder: (context, state) {
           return DropdownButton(
@@ -24,7 +24,7 @@ class MeDropDown<T> extends StatelessWidget {
             value: valueItem,
             onChanged: (value) {
               valueItem = value as T;
-              bloc.addNewEvent(value);
+              addEvent(value);
             },
           );
         });

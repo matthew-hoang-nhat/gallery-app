@@ -5,7 +5,11 @@ import 'package:flutter/material.dart';
 
 part 'row_column_state.dart';
 
-class RowColumnCubit extends Cubit<RowColumnState> {
+abstract class ParentCubit {
+  void addNewEvent(dynamic);
+}
+
+class RowColumnCubit extends Cubit<RowColumnState> implements ParentCubit {
   RowColumnCubit()
       : super(const RowColumnInitial(
           isColumn: true,
@@ -17,6 +21,7 @@ class RowColumnCubit extends Cubit<RowColumnState> {
           verticalDirection: VerticalDirection.down,
         ));
 
+  @override
   addNewEvent(value) {
     if (value is MainAxisAlignment) {
       emit(

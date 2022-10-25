@@ -142,43 +142,53 @@ class _RowColumnScreenState extends State<RowColumnScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text('mainAxisSize'),
-                      MeDropDown<MainAxisSize>(items: mainAxisSizes),
+                      MeDropDown<MainAxisSize, RowColumnCubit>(
+                        items: mainAxisSizes,
+                        addEvent: bloc.addNewEvent,
+                      ),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text('mainAxisAlignments'),
-                      MeDropDown<MainAxisAlignment>(items: mainAxisAlignments),
+                      MeDropDown<MainAxisAlignment, RowColumnCubit>(
+                          items: mainAxisAlignments,
+                          addEvent: bloc.addNewEvent),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text('crossAxisAlignment'),
-                      MeDropDown<CrossAxisAlignment>(
-                          items: crossAxisAlignments),
+                      MeDropDown<CrossAxisAlignment, RowColumnCubit>(
+                          items: crossAxisAlignments,
+                          addEvent: bloc.addNewEvent),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text('verticalDirection'),
-                      MeDropDown<VerticalDirection>(items: verticalDirections),
+                      MeDropDown<VerticalDirection, RowColumnCubit>(
+                          items: verticalDirections,
+                          addEvent: bloc.addNewEvent),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text('textDirection'),
-                      MeDropDown<TextDirection>(items: textDirections),
+                      MeDropDown<TextDirection, RowColumnCubit>(
+                          items: textDirections, addEvent: bloc.addNewEvent),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text('textBaseline'),
-                      MeDropDown<TextBaseline>(items: textBaselines),
+                      MeDropDown<TextBaseline, RowColumnCubit>(
+                          items: textBaselines, addEvent: bloc.addNewEvent),
                     ],
                   ),
                 ],

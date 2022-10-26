@@ -30,6 +30,12 @@ class HomeScreen extends StatelessWidget {
             },
             child: const Text('Stack Align'),
           ),
+          TextButton(
+            onPressed: () {
+              context.push(AppPages.containerScreen);
+            },
+            child: const Text('Container'),
+          ),
         ],
       )),
     );

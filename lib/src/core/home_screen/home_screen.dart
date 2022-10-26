@@ -42,6 +42,12 @@ class HomeScreen extends StatelessWidget {
             },
             child: const Text('Text Field'),
           ),
+          TextButton(
+            onPressed: () {
+              context.push(AppPages.buttonScreen);
+            },
+            child: const Text('Button'),
+          ),
         ],
       )),
     );

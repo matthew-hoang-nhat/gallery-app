@@ -6,79 +6,72 @@ import '../../row_column/widgets/me_drop_down.dart';
 import '../cubit/stack_align_cubit.dart';
 part './widgets/square.dart';
 
-class StackAlignScreen extends StatefulWidget {
+class StackAlignScreen extends StatelessWidget {
   const StackAlignScreen({super.key});
 
   @override
-  State<StackAlignScreen> createState() => _StackAlignScreenState();
-}
-
-class _StackAlignScreenState extends State<StackAlignScreen> {
-  late final widgets = [
-    bigSquare,
-    miniSquare,
-  ];
-  final alignments = [
-    Alignment.center,
-    Alignment.topLeft,
-    Alignment.topRight,
-    Alignment.topCenter,
-    Alignment.bottomLeft,
-    Alignment.bottomRight,
-    Alignment.bottomCenter,
-  ];
-
-  final textDirections = [
-    TextDirection.ltr,
-    TextDirection.rtl,
-  ];
-
-  final stackFits = [
-    StackFit.loose,
-    StackFit.passthrough,
-  ];
-
-  final clips = [
-    Clip.antiAlias,
-    Clip.none,
-    Clip.antiAliasWithSaveLayer,
-    Clip.hardEdge,
-  ];
-
-  final bloc = StackAlignCubit();
-  final List<bool> isColumns = [true, false];
-  bool isColumn = true;
-
-  @override
   Widget build(BuildContext context) {
+    late final widgets = [
+      bigSquare,
+      miniSquare,
+    ];
+
+    final alignments = [
+      Alignment.center,
+      Alignment.topLeft,
+      Alignment.topRight,
+      Alignment.topCenter,
+      Alignment.bottomLeft,
+      Alignment.bottomRight,
+      Alignment.bottomCenter,
+    ];
+
+    final textDirections = [
+      TextDirection.ltr,
+      TextDirection.rtl,
+    ];
+
+    final stackFits = [
+      StackFit.loose,
+      StackFit.passthrough,
+    ];
+
+    final clips = [
+      Clip.antiAlias,
+      Clip.none,
+      Clip.antiAliasWithSaveLayer,
+      Clip.hardEdge,
+    ];
+
+    final bloc = context.read<StackAlignCubit>();
+
     return Scaffold(
       appBar: AppBar(title: const Text('Stack & Alignment')),
       body: SafeArea(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          BlocBuilder<StackAlignCubit, StackAlignState>(
-            bloc: bloc,
-            builder: (BuildContext context, state) {
-              return SizedBox(
-                // height: 400,
-                // width: double.infinity,
-                child: Center(
-                  child: Stack(
-                    alignment: state.alignment,
-                    textDirection: state.textDirection,
-                    fit: state.stackFit,
-                    clipBehavior: state.clip,
-                    children: widgets,
+          child: BlocProvider(
+        create: (context) => bloc,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            BlocBuilder<StackAlignCubit, StackAlignState>(
+              builder: (BuildContext context, state) {
+                return SizedBox(
+                  // height: 400,
+                  // width: double.infinity,
+                  child: Center(
+                    child: Stack(
+                      alignment: state.alignment,
+                      textDirection: state.textDirection,
+                      fit: state.stackFit,
+                      clipBehavior: state.clip,
+                      children: widgets,
+                    ),
                   ),
-                ),
-              );
-            },
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: BlocProvider(
-              create: (context) => bloc,
+                );
+              },
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                 children: [
                   Row(
@@ -124,8 +117,8 @@ class _StackAlignScreenState extends State<StackAlignScreen> {
                 ],
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       )),
     );
   }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gallery_app/src/config/routes/routes_page_app.dart';
+import 'package:gallery_app/src/config/routes/routes_name_app.dart';
 import 'package:go_router/go_router.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -14,43 +14,43 @@ class HomeScreen extends StatelessWidget {
         children: [
           TextButton(
             onPressed: () {
-              context.push(AppPages.textSpanScreen);
+              context.push(Paths.textSpanScreen);
             },
             child: const Text('Text span'),
           ),
           TextButton(
             onPressed: () {
-              context.push(AppPages.rowColumnScreen);
+              context.push(Paths.rowColumnScreen);
             },
             child: const Text('Row Column'),
           ),
           TextButton(
             onPressed: () {
-              context.push(AppPages.stackAlignScreen);
+              context.push(Paths.stackAlignScreen);
             },
             child: const Text('Stack Align'),
           ),
           TextButton(
             onPressed: () {
-              context.push(AppPages.containerScreen);
+              context.push(Paths.containerScreen);
             },
             child: const Text('Container'),
           ),
           TextButton(
             onPressed: () {
-              context.push(AppPages.textFieldScreen);
+              context.push(Paths.textFieldScreen);
             },
             child: const Text('Text Field'),
           ),
           TextButton(
             onPressed: () {
-              context.push(AppPages.buttonScreen);
+              context.push(Paths.buttonScreen);
             },
             child: const Text('Button'),
           ),
           TextButton(
             onPressed: () {
-              context.push(AppPages.cupertinoScreen);
+              context.push(Paths.cupertinoScreen);
             },
             child: const Text('Cupertino'),
           ),

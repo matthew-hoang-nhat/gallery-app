@@ -7,101 +7,90 @@ import 'package:gallery_app/src/features/row_column/widgets/me_drop_down.dart';
 
 import 'widgets/start_widget.dart';
 
-class RowColumnScreen extends StatefulWidget {
+class RowColumnScreen extends StatelessWidget {
   const RowColumnScreen({super.key});
 
   @override
-  State<RowColumnScreen> createState() => _RowColumnScreenState();
-}
-
-class _RowColumnScreenState extends State<RowColumnScreen> {
-  late final widgets = [
-    startWidget(size: 1),
-    const SizedBox(
-      height: 30,
-      width: 30,
-    ),
-    startWidget(size: 2),
-    const SizedBox(
-      height: 30,
-      width: 30,
-    ),
-    startWidget(size: 1),
-  ];
-  final mainAxisAlignments = [
-    MainAxisAlignment.center,
-    MainAxisAlignment.end,
-    MainAxisAlignment.spaceAround,
-    MainAxisAlignment.spaceBetween,
-    MainAxisAlignment.spaceEvenly,
-  ];
-
-  final crossAxisAlignments = [
-    CrossAxisAlignment.center,
-    CrossAxisAlignment.end,
-    CrossAxisAlignment.start,
-  ];
-
-  final textBaselines = [
-    TextBaseline.alphabetic,
-    TextBaseline.ideographic,
-  ];
-
-  final mainAxisSizes = [
-    MainAxisSize.min,
-    MainAxisSize.max,
-  ];
-  final textDirections = [
-    TextDirection.ltr,
-    TextDirection.rtl,
-  ];
-  final verticalDirections = [
-    VerticalDirection.down,
-    VerticalDirection.up,
-  ];
-
-  RowColumnCubit bloc = RowColumnCubit();
-  final List<bool> isColumns = [true, false];
-  bool isColumn = true;
-
-  @override
   Widget build(BuildContext context) {
+    late final widgets = [
+      startWidget(size: 1),
+      const SizedBox(
+        height: 30,
+        width: 30,
+      ),
+      startWidget(size: 2),
+      const SizedBox(
+        height: 30,
+        width: 30,
+      ),
+      startWidget(size: 1),
+    ];
+    final mainAxisAlignments = [
+      MainAxisAlignment.center,
+      MainAxisAlignment.end,
+      MainAxisAlignment.spaceAround,
+      MainAxisAlignment.spaceBetween,
+      MainAxisAlignment.spaceEvenly,
+    ];
+    final crossAxisAlignments = [
+      CrossAxisAlignment.center,
+      CrossAxisAlignment.end,
+      CrossAxisAlignment.start,
+    ];
+    final textBaselines = [
+      TextBaseline.alphabetic,
+      TextBaseline.ideographic,
+    ];
+    final mainAxisSizes = [
+      MainAxisSize.min,
+      MainAxisSize.max,
+    ];
+    final textDirections = [
+      TextDirection.ltr,
+      TextDirection.rtl,
+    ];
+    final verticalDirections = [
+      VerticalDirection.down,
+      VerticalDirection.up,
+    ];
+    RowColumnCubit bloc = context.read<RowColumnCubit>();
+    bool isColumn = true;
+
     return Scaffold(
       appBar: AppBar(title: const Text('Row & Column')),
       body: SafeArea(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          BlocBuilder<RowColumnCubit, RowColumnState>(
-            bloc: bloc,
-            builder: (BuildContext context, state) {
-              return Container(
-                  width: double.infinity,
-                  color: AppColors.yellow,
-                  padding: const EdgeInsets.all(20),
-                  child: state.isColumn == true
-                      ? Column(
-                          mainAxisSize: state.mainAxisSize,
-                          mainAxisAlignment: state.mainAxisAlignment,
-                          crossAxisAlignment: state.crossAxisAlignment,
-                          textBaseline: state.textBaseline,
-                          textDirection: state.textDirection,
-                          verticalDirection: state.verticalDirection,
-                          children: widgets)
-                      : Row(
-                          mainAxisSize: state.mainAxisSize,
-                          mainAxisAlignment: state.mainAxisAlignment,
-                          crossAxisAlignment: state.crossAxisAlignment,
-                          textBaseline: state.textBaseline,
-                          textDirection: state.textDirection,
-                          verticalDirection: state.verticalDirection,
-                          children: widgets));
-            },
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: BlocProvider(
-              create: (context) => bloc,
+          child: BlocProvider(
+        create: (context) => bloc,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            BlocBuilder<RowColumnCubit, RowColumnState>(
+              builder: (BuildContext context, state) {
+                return Container(
+                    width: double.infinity,
+                    color: AppColors.yellow,
+                    padding: const EdgeInsets.all(20),
+                    child: state.isColumn == true
+                        ? Column(
+                            mainAxisSize: state.mainAxisSize,
+                            mainAxisAlignment: state.mainAxisAlignment,
+                            crossAxisAlignment: state.crossAxisAlignment,
+                            textBaseline: state.textBaseline,
+                            textDirection: state.textDirection,
+                            verticalDirection: state.verticalDirection,
+                            children: widgets)
+                        : Row(
+                            mainAxisSize: state.mainAxisSize,
+                            mainAxisAlignment: state.mainAxisAlignment,
+                            crossAxisAlignment: state.crossAxisAlignment,
+                            textBaseline: state.textBaseline,
+                            textDirection: state.textDirection,
+                            verticalDirection: state.verticalDirection,
+                            children: widgets));
+              },
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                 children: [
                   BlocBuilder<RowColumnCubit, RowColumnState>(
@@ -194,8 +183,8 @@ class _RowColumnScreenState extends State<RowColumnScreen> {
                 ],
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       )),
     );
   }

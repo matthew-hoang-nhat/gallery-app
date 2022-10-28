@@ -5,29 +5,23 @@ import 'package:gallery_app/src/features/text_field/text_field_enum.dart';
 
 import '../widgets/me_switch.dart';
 
-class TextFieldScreen extends StatefulWidget {
+class TextFieldScreen extends StatelessWidget {
   const TextFieldScreen({super.key});
 
   @override
-  State<TextFieldScreen> createState() => _TextFieldScreenState();
-}
-
-class _TextFieldScreenState extends State<TextFieldScreen> {
-  final bloc = TextFieldCubit();
-
-  @override
   Widget build(BuildContext context) {
+    final bloc = TextFieldCubit();
     return Scaffold(
       appBar: AppBar(title: const Text('Form view')),
       body: SafeArea(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          const SizedBox(height: 30),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: BlocProvider(
-              create: (context) => bloc,
+          child: BlocProvider(
+        create: (context) => bloc,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const SizedBox(height: 30),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                 children: [
                   Row(
@@ -121,34 +115,35 @@ class _TextFieldScreenState extends State<TextFieldScreen> {
                 ],
               ),
             ),
-          ),
-          SizedBox(
-            height: 100,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-              child: BlocBuilder<TextFieldCubit, TextFieldState>(
-                bloc: bloc,
-                builder: (BuildContext context, state) {
-                  return Center(
-                    child: TextField(
-                      decoration: InputDecoration(
-                        labelText: state.labelText ? 'Label Text' : null,
-                        hintText: state.hintText ? 'Hint Text' : null,
-                        helperText: state.helpText ? 'Help Text' : null,
-                        errorText: state.errorText ? 'Error Text' : null,
-                        counterText: state.counterText ? 'Counter Text' : null,
-                        prefix: state.prefix ? const Text('prefix') : null,
-                        suffix: state.suffix ? const Text('suffix') : null,
-                        prefixIcon:
-                            state.prefixIcon ? const Icon(Icons.abc) : null,
+            SizedBox(
+              height: 100,
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                child: BlocBuilder<TextFieldCubit, TextFieldState>(
+                  builder: (BuildContext context, state) {
+                    return Center(
+                      child: TextField(
+                        decoration: InputDecoration(
+                          labelText: state.labelText ? 'Label Text' : null,
+                          hintText: state.hintText ? 'Hint Text' : null,
+                          helperText: state.helpText ? 'Help Text' : null,
+                          errorText: state.errorText ? 'Error Text' : null,
+                          counterText:
+                              state.counterText ? 'Counter Text' : null,
+                          prefix: state.prefix ? const Text('prefix') : null,
+                          suffix: state.suffix ? const Text('suffix') : null,
+                          prefixIcon:
+                              state.prefixIcon ? const Icon(Icons.abc) : null,
+                        ),
                       ),
-                    ),
-                  );
-                },
+                    );
+                  },
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       )),
     );
   }

@@ -8,53 +8,49 @@ import 'package:gallery_app/src/features/stack_align/screens/stack_align_screen.
 import 'package:gallery_app/src/features/text_field/screens/text_field_screen.dart';
 import 'package:go_router/go_router.dart';
 import '../../features/text_span/text_span_screen.dart';
+import '../../features/wrap_chip/screens/wrap_chip_screen.dart';
 
 class AppPages {
-  static const String textSpanScreen = Paths.textSpanScreen;
-  static const String homeScreen = Paths.homeScreen;
-  static const String rowColumnScreen = Paths.rowColumnScreen;
-  static const String stackAlignScreen = Paths.stackAlignScreen;
-  static const String containerScreen = Paths.containerScreen;
-  static const String textFieldScreen = Paths.textFieldScreen;
-  static const String buttonScreen = Paths.buttonScreen;
-  static const String cupertinoScreen = Paths.cupertinoScreen;
-
   static const List<String> needAuthenticatedPages = [
     // AppPages.profile,
   ];
 
   static final pages = <GoRoute>[
     GoRoute(
-      path: textSpanScreen,
+      path: Paths.textSpanScreen,
       builder: (context, state) => const TextSpanScreen(),
     ),
     GoRoute(
-      path: rowColumnScreen,
+      path: Paths.rowColumnScreen,
       builder: (context, state) => const RowColumnScreen(),
     ),
     GoRoute(
-      path: homeScreen,
+      path: Paths.homeScreen,
       builder: (context, state) => const HomeScreen(),
     ),
     GoRoute(
-      path: stackAlignScreen,
+      path: Paths.stackAlignScreen,
       builder: (context, state) => const StackAlignScreen(),
     ),
     GoRoute(
-      path: containerScreen,
+      path: Paths.containerScreen,
       builder: (context, state) => const ContainerScreen(),
     ),
     GoRoute(
-      path: textFieldScreen,
+      path: Paths.textFieldScreen,
       builder: (context, state) => const TextFieldScreen(),
     ),
     GoRoute(
-      path: buttonScreen,
+      path: Paths.buttonScreen,
       builder: (context, state) => const ButtonScreen(),
     ),
     GoRoute(
-      path: cupertinoScreen,
+      path: Paths.cupertinoScreen,
       builder: (context, state) => const CupertinoScreen(),
+    ),
+    GoRoute(
+      path: Paths.wrapChipScreen,
+      builder: (context, state) => const WrapChipScreen(),
     ),
   ];
 }

@@ -19,6 +19,7 @@ class ContainerCubit extends Cubit<ContainerState> implements ParentCubit {
 
   @override
   void addNewEvent(value) {
+    print(value);
     if (value is Color) {
       emit(NewContainerState.fromOldSettingState(state, background: value));
     }

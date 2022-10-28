@@ -48,6 +48,12 @@ class HomeScreen extends StatelessWidget {
             },
             child: const Text('Button'),
           ),
+          TextButton(
+            onPressed: () {
+              context.push(AppPages.cupertinoScreen);
+            },
+            child: const Text('Cupertino'),
+          ),
         ],
       )),
     );

@@ -1,6 +1,7 @@
 import 'package:gallery_app/src/core/home_screen/home_screen.dart';
 import 'package:gallery_app/src/features/button/screens/button_screen.dart';
 import 'package:gallery_app/src/features/container/screens/container_screen.dart';
+import 'package:gallery_app/src/features/cupertino/screens/cupertino_screen.dart';
 import 'package:gallery_app/src/features/row_column/row_column_screen.dart';
 import 'package:gallery_app/src/features/stack_align/screens/stack_align_screen.dart';
 import 'package:gallery_app/src/features/text_field/screens/text_field_screen.dart';
@@ -16,6 +17,7 @@ class AppPages {
   static const String containerScreen = _Paths.containerScreen;
   static const String textFieldScreen = _Paths.textFieldScreen;
   static const String buttonScreen = _Paths.buttonScreen;
+  static const String cupertinoScreen = _Paths.cupertinoScreen;
 
   static const List<String> needAuthenticatedPages = [
     // AppPages.profile,
@@ -50,6 +52,10 @@ class AppPages {
       path: buttonScreen,
       builder: (context, state) => const ButtonScreen(),
     ),
+    GoRoute(
+      path: cupertinoScreen,
+      builder: (context, state) => const CupertinoScreen(),
+    ),
   ];
 }
 
@@ -61,4 +67,5 @@ abstract class _Paths {
   static const String containerScreen = "/container-screen";
   static const String textFieldScreen = "/text-field-screen";
   static const String buttonScreen = "/button-screen";
+  static const String cupertinoScreen = "/cupertino-screen";
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'src/config/routes/app_routers.dart';
+import 'src/config/routes/routers_app.dart';
 
 final getIt = GetIt.instance;
 

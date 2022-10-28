@@ -1,3 +1,4 @@
+import 'package:gallery_app/src/config/routes/routes_name_app.dart';
 import 'package:gallery_app/src/core/home_screen/home_screen.dart';
 import 'package:gallery_app/src/features/button/screens/button_screen.dart';
 import 'package:gallery_app/src/features/container/screens/container_screen.dart';
@@ -6,18 +7,17 @@ import 'package:gallery_app/src/features/row_column/row_column_screen.dart';
 import 'package:gallery_app/src/features/stack_align/screens/stack_align_screen.dart';
 import 'package:gallery_app/src/features/text_field/screens/text_field_screen.dart';
 import 'package:go_router/go_router.dart';
-
 import '../../features/text_span/text_span_screen.dart';
 
 class AppPages {
-  static const String textSpanScreen = _Paths.textSpanScreen;
-  static const String homeScreen = _Paths.homeScreen;
-  static const String rowColumnScreen = _Paths.rowColumnScreen;
-  static const String stackAlignScreen = _Paths.stackAlignScreen;
-  static const String containerScreen = _Paths.containerScreen;
-  static const String textFieldScreen = _Paths.textFieldScreen;
-  static const String buttonScreen = _Paths.buttonScreen;
-  static const String cupertinoScreen = _Paths.cupertinoScreen;
+  static const String textSpanScreen = Paths.textSpanScreen;
+  static const String homeScreen = Paths.homeScreen;
+  static const String rowColumnScreen = Paths.rowColumnScreen;
+  static const String stackAlignScreen = Paths.stackAlignScreen;
+  static const String containerScreen = Paths.containerScreen;
+  static const String textFieldScreen = Paths.textFieldScreen;
+  static const String buttonScreen = Paths.buttonScreen;
+  static const String cupertinoScreen = Paths.cupertinoScreen;
 
   static const List<String> needAuthenticatedPages = [
     // AppPages.profile,
@@ -57,15 +57,4 @@ class AppPages {
       builder: (context, state) => const CupertinoScreen(),
     ),
   ];
-}
-
-abstract class _Paths {
-  static const String homeScreen = "/";
-  static const String textSpanScreen = "/text-span-screen";
-  static const String rowColumnScreen = "/row-column-screen";
-  static const String stackAlignScreen = "/stack-align-screen";
-  static const String containerScreen = "/container-screen";
-  static const String textFieldScreen = "/text-field-screen";
-  static const String buttonScreen = "/button-screen";
-  static const String cupertinoScreen = "/cupertino-screen";
 }

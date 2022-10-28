@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import 'app_pages.dart';
+import 'routes_page_app.dart';
 
 class AppRouter {
   // const AppRouter(this._appBloc);

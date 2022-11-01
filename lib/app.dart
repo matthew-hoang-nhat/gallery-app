@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gallery_app/src/features/bottom_appbar_view/cubit/bottom_appbar_cubit.dart';
 import 'package:gallery_app/src/features/container/cubit/container_cubit.dart';
 import 'package:gallery_app/src/features/row_column/cubit/row_column_cubit.dart';
 import 'package:gallery_app/src/features/stack_align/cubit/stack_align_cubit.dart';
@@ -22,6 +23,7 @@ class App extends StatelessWidget {
         BlocProvider(create: (context) => StackAlignCubit()),
         BlocProvider(create: (context) => TextFieldCubit()),
         BlocProvider(create: (context) => WrapChipCubit()),
+        BlocProvider(create: (context) => BottomAppBarCubit()),
       ],
       child: MaterialApp.router(
         theme: ThemeData(textTheme: const TextTheme()),

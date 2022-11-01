@@ -54,6 +54,18 @@ class HomeScreen extends StatelessWidget {
             },
             child: const Text('Cupertino'),
           ),
+          TextButton(
+            onPressed: () {
+              context.push(Paths.wrapChipScreen);
+            },
+            child: const Text('Wrap view'),
+          ),
+          TextButton(
+            onPressed: () {
+              context.push(Paths.bottomAppBarViewScreen);
+            },
+            child: const Text('Bottom AppBar View'),
+          ),
         ],
       )),
     );

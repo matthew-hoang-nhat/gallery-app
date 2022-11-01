@@ -1,8 +1,10 @@
 import 'package:gallery_app/src/config/routes/routes_name_app.dart';
 import 'package:gallery_app/src/core/home_screen/home_screen.dart';
+import 'package:gallery_app/src/features/bottom_appbar_view/screens/bottom_appbar_view_screen.dart';
 import 'package:gallery_app/src/features/button/screens/button_screen.dart';
 import 'package:gallery_app/src/features/container/screens/container_screen.dart';
 import 'package:gallery_app/src/features/cupertino/screens/cupertino_screen.dart';
+import 'package:gallery_app/src/features/custom_box_shape/screens/custom_box_shape_screen.dart';
 import 'package:gallery_app/src/features/row_column/row_column_screen.dart';
 import 'package:gallery_app/src/features/stack_align/screens/stack_align_screen.dart';
 import 'package:gallery_app/src/features/text_field/screens/text_field_screen.dart';
@@ -51,6 +53,14 @@ class AppPages {
     GoRoute(
       path: Paths.wrapChipScreen,
       builder: (context, state) => const WrapChipScreen(),
+    ),
+    GoRoute(
+      path: Paths.customBoxShapeScreen,
+      builder: (context, state) => const CustomBoxShapeScreen(),
+    ),
+    GoRoute(
+      path: Paths.bottomAppBarViewScreen,
+      builder: (context, state) => BottomAppBarViewScreen(),
     ),
   ];
 }

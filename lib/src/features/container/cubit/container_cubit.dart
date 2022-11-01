@@ -13,7 +13,7 @@ class ContainerCubit extends Cubit<ContainerState> implements ParentCubit {
           background: AppColors.white,
           blendMode: BlendMode.src,
           border: const Border.fromBorderSide(BorderSide.none),
-          borderRadius: BorderRadius.circular(5),
+          borderRadius: BorderRadius.circular(0),
           boxShadow: const BoxShadow(),
         ));
 

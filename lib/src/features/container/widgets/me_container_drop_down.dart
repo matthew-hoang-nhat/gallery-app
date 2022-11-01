@@ -2,13 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MeContainerDropDown<T, TypeCubit extends Cubit> extends StatelessWidget {
-  const MeContainerDropDown({super.key, required this.items, required this.addEvent});
+  const MeContainerDropDown(
+      {super.key,
+      required this.items,
+      required this.addEvent,
+      required this.initValue});
   final List<Map<T, String>> items;
   final Function addEvent;
+  final Map<T, String> initValue;
   @override
   Widget build(BuildContext context) {
-    final bloc = BlocProvider.of<TypeCubit>(context);
-    Map<T, String> valueItem = items[0];
+    final bloc = context.read<TypeCubit>();
+    Map<T, String> valueItem = initValue;
     return BlocBuilder(
         bloc: bloc,
         builder: (context, state) {

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gallery_app/src/features/container/cubit/container_cubit.dart';
-
 import '../../../config/constants/app_colors.dart';
-import '../../wrap_chip/widgets/me_container_drop_down.dart';
-import '../../wrap_chip/widgets/me_switch.dart';
+import '../widgets/me_container_drop_down.dart';
+import '../widgets/me_switch.dart';
 
 class ContainerScreen extends StatelessWidget {
   const ContainerScreen({super.key});

@@ -8,6 +8,7 @@ import 'package:gallery_app/src/features/custom_box_shape/screens/custom_box_sha
 import 'package:gallery_app/src/features/row_column/row_column_screen.dart';
 import 'package:gallery_app/src/features/stack_align/screens/stack_align_screen.dart';
 import 'package:gallery_app/src/features/text_field/screens/text_field_screen.dart';
+import 'package:gallery_app/src/features/title_appbar/screens/title_appbar_screen.dart';
 import 'package:go_router/go_router.dart';
 import '../../features/text_span/text_span_screen.dart';
 import '../../features/wrap_chip/screens/wrap_chip_screen.dart';
@@ -61,6 +62,10 @@ class AppPages {
     GoRoute(
       path: Paths.bottomAppBarViewScreen,
       builder: (context, state) => BottomAppBarViewScreen(),
+    ),
+    GoRoute(
+      path: Paths.titleAppBarScreen,
+      builder: (context, state) => TitleAppBarScreen(),
     ),
   ];
 }

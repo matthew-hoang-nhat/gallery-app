@@ -44,81 +44,76 @@ class StackAlignScreen extends StatelessWidget {
     ];
 
     final bloc = context.read<StackAlignCubit>();
-
     return Scaffold(
       appBar: AppBar(title: const Text('Stack & Alignment')),
       body: SafeArea(
-          child: BlocProvider(
-        create: (context) => bloc,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            BlocBuilder<StackAlignCubit, StackAlignState>(
-              builder: (BuildContext context, state) {
-                return SizedBox(
-                  // height: 400,
-                  // width: double.infinity,
-                  child: Center(
-                    child: Stack(
-                      alignment: state.alignment,
-                      textDirection: state.textDirection,
-                      fit: state.stackFit,
-                      clipBehavior: state.clip,
-                      children: widgets,
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          BlocBuilder<StackAlignCubit, StackAlignState>(
+            builder: (BuildContext context, state) {
+              return SizedBox(
+                child: Center(
+                  child: Stack(
+                    alignment: state.alignment,
+                    textDirection: state.textDirection,
+                    fit: state.stackFit,
+                    clipBehavior: state.clip,
+                    children: widgets,
+                  ),
+                ),
+              );
+            },
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text('alignments'),
+                    MeDropDown<Alignment, StackAlignCubit>(
+                      items: alignments,
+                      addEvent: bloc.addNewEvent,
+                      initValue: bloc.state.alignment,
                     ),
-                  ),
-                );
-              },
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text('alignments'),
-                      MeDropDown<Alignment, StackAlignCubit>(
-                        items: alignments,
-                        addEvent: bloc.addNewEvent,
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text('textDirection'),
-                      MeDropDown<TextDirection, StackAlignCubit>(
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text('textDirection'),
+                    MeDropDown<TextDirection, StackAlignCubit>(
                         items: textDirections,
                         addEvent: bloc.addNewEvent,
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text('stackFit'),
-                      MeDropDown<StackFit, StackAlignCubit>(
+                        initValue: bloc.state.textDirection),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text('stackFit'),
+                    MeDropDown<StackFit, StackAlignCubit>(
                         items: stackFits,
                         addEvent: bloc.addNewEvent,
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text('clip'),
-                      MeDropDown<Clip, StackAlignCubit>(
+                        initValue: bloc.state.stackFit),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text('clip'),
+                    MeDropDown<Clip, StackAlignCubit>(
                         items: clips,
                         addEvent: bloc.addNewEvent,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+                        initValue: bloc.state.clip),
+                  ],
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       )),
     );
   }

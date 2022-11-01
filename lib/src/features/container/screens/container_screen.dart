@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gallery_app/src/features/container/cubit/container_cubit.dart';
+
 import '../../../config/constants/app_colors.dart';
 import '../widgets/me_container_drop_down.dart';
 import '../widgets/me_switch.dart';
@@ -16,6 +17,7 @@ class ContainerScreen extends StatelessWidget {
       {AppColors.red: 'red'},
       {AppColors.green: 'green'},
     ];
+
     final borders = [
       {const Border.fromBorderSide(BorderSide.none): false},
       {Border.all(): true}
@@ -45,91 +47,105 @@ class ContainerScreen extends StatelessWidget {
     ];
     final bloc = context.read<ContainerCubit>();
 
-    return BlocProvider<ContainerCubit>(
-      create: (context) => bloc,
-      child: Scaffold(
-        appBar: AppBar(title: const Text('Stack & Alignment')),
-        body: SafeArea(
+    return Scaffold(
+      appBar: AppBar(title: const Text('Container')),
+      body: SafeArea(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          const SizedBox(height: 30),
+          BlocBuilder<ContainerCubit, ContainerState>(
+            builder: (BuildContext context, state) {
+              return Center(
+                child: Container(
+                  height: 300,
+                  width: 300,
+                  decoration: BoxDecoration(
+                      backgroundBlendMode: state.blendMode,
+                      borderRadius: state.borderRadius,
+                      border: state.border,
+                      color: state.background,
+                      boxShadow: [state.boxShadow]),
+                ),
+              );
+            },
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const SizedBox(height: 30),
-            BlocBuilder<ContainerCubit, ContainerState>(
-              builder: (BuildContext context, state) {
-                return Center(
-                  child: Container(
-                    height: 300,
-                    width: 300,
-                    decoration: BoxDecoration(
-                        backgroundBlendMode: state.blendMode,
-                        borderRadius: state.borderRadius,
-                        border: state.border,
-                        color: state.background,
-                        boxShadow: [state.boxShadow]),
-                  ),
-                );
-              },
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text('Border'),
+                    MeContainerSwitch<Border, ContainerCubit>(
+                      addEvent: bloc.addNewEvent,
+                      items: borders,
+                      initValue: borders
+                          .firstWhere((element) =>
+                              element.keys.first == bloc.state.border)
+                          .values
+                          .first,
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text('BorderRadius'),
+                    MeContainerDropDown<BorderRadius, ContainerCubit>(
+                      addEvent: bloc.addNewEvent,
+                      items: borderRadiuses,
+                      initValue: borderRadiuses.firstWhere((element) =>
+                          element.keys.first == bloc.state.borderRadius),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text('BorderShadow'),
+                    MeContainerSwitch<BoxShadow, ContainerCubit>(
+                      addEvent: bloc.addNewEvent,
+                      items: boxShadows,
+                      initValue: boxShadows
+                          .firstWhere((element) =>
+                              element.keys.first == bloc.state.boxShadow)
+                          .values
+                          .first,
+                      // initValue: items[0].values.first ,
+                    )
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text('Background'),
+                    MeContainerDropDown<Color, ContainerCubit>(
+                      items: colors,
+                      addEvent: bloc.addNewEvent,
+                      initValue: colors.firstWhere((element) =>
+                          element.keys.first == bloc.state.background),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text('BlendMode'),
+                    MeContainerDropDown<BlendMode, ContainerCubit>(
+                      items: blendModes,
+                      addEvent: bloc.addNewEvent,
+                      initValue: blendModes.firstWhere((element) =>
+                          element.keys.first == bloc.state.blendMode),
+                    ),
+                  ],
+                ),
+              ],
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text('Border'),
-                      MeContainerSwitch<Border, ContainerCubit>(
-                        addEvent: bloc.addNewEvent,
-                        items: borders,
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text('BorderRadius'),
-                      MeContainerDropDown<BorderRadius, ContainerCubit>(
-                        addEvent: bloc.addNewEvent,
-                        items: borderRadiuses,
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text('BorderShadow'),
-                      MeContainerSwitch<BoxShadow, ContainerCubit>(
-                        addEvent: bloc.addNewEvent,
-                        items: boxShadows,
-                      )
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text('Background'),
-                      MeContainerDropDown<Color, ContainerCubit>(
-                        items: colors,
-                        addEvent: bloc.addNewEvent,
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text('BlendMode'),
-                      MeContainerDropDown<BlendMode, ContainerCubit>(
-                        items: blendModes,
-                        addEvent: bloc.addNewEvent,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ],
-        )),
-      ),
+          ),
+        ],
+      )),
     );
   }
 }

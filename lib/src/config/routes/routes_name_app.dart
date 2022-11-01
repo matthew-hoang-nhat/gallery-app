@@ -8,4 +8,6 @@ class Paths {
   static const String buttonScreen = "/button-screen";
   static const String cupertinoScreen = "/cupertino-screen";
   static const String wrapChipScreen = "/wrap-chip-screen";
+  static const String bottomAppBarViewScreen = "/bottom-appbar-view-screen";
+  static const String customBoxShapeScreen = "/custom-box-shape-screen";
 }

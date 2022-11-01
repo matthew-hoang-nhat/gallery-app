@@ -10,7 +10,7 @@ class AppRouter {
   // final AppBloc _appBloc;
 
   GoRouter get router => GoRouter(
-        initialLocation: Paths.homeScreen,
+        initialLocation: Paths.titleAppBarScreen,
         routes: AppPages.pages,
         debugLogDiagnostics: true,
         // observers: [],

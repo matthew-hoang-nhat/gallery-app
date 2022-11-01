@@ -10,4 +10,5 @@ class Paths {
   static const String wrapChipScreen = "/wrap-chip-screen";
   static const String bottomAppBarViewScreen = "/bottom-appbar-view-screen";
   static const String customBoxShapeScreen = "/custom-box-shape-screen";
+  static const String titleAppBarScreen = "/title-app-bar-screen";
 }

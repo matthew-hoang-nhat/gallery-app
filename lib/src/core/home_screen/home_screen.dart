@@ -72,11 +72,13 @@ class HomeScreen extends StatelessWidget {
             },
           ),
           ListTile(
-            title: const Text('List title'),
+            title: const Text('CustomBoxShape'),
             subtitle: const Text(
                 'A single fixed-height row that typically contains some text as well as a leading or trailing icon.'),
             leading: const Icon(Icons.list),
-            onTap: () {},
+            onTap: () {
+              context.push(Paths.customBoxShapeScreen);
+            },
           ),
           ListTile(
             title: const Text('Alert'),
